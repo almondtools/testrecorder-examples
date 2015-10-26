@@ -5,10 +5,10 @@ import static java.util.Arrays.asList;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.almondtools.testrecorder.MethodSnapshotConsumer;
+import com.almondtools.testrecorder.ScheduledTestGenerator;
 import com.almondtools.testrecorder.SnapshotConfig;
-import com.almondtools.testrecorder.generator.MethodSnapshotConsumer;
-import com.almondtools.testrecorder.generator.ScheduledTestGenerator;
-import com.almondtools.testrecorder.generator.ValueSnapshotConsumer;
+import com.almondtools.testrecorder.ValueSnapshotConsumer;
 
 public class AgentConfig implements SnapshotConfig {
 
