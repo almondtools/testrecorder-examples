@@ -5,25 +5,19 @@ import static java.util.Arrays.asList;
 import java.nio.file.Paths;
 import java.util.List;
 
-import com.almondtools.testrecorder.MethodSnapshotConsumer;
 import com.almondtools.testrecorder.ScheduledTestGenerator;
 import com.almondtools.testrecorder.SnapshotConfig;
-import com.almondtools.testrecorder.ValueSnapshotConsumer;
+import com.almondtools.testrecorder.SnapshotConsumer;
 
 public class AgentConfig implements SnapshotConfig {
 
 	@Override
-	public MethodSnapshotConsumer getMethodConsumer() {
+	public SnapshotConsumer getSnapshotConsumer() {
 		return new ScheduledTestGenerator()
 			.withDumpOnShutDown(true)
 			.withDumpTo(Paths.get("target/generated"));
 	}
 	
-	@Override
-	public ValueSnapshotConsumer getValueConsumer() {
-		return null;
-	}
-
 	@Override
 	public long getTimeoutInMillis() {
 		return 100_000;
