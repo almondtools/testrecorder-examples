@@ -13,7 +13,7 @@ public class AgentConfig implements SnapshotConfig {
 
 	@Override
 	public SnapshotConsumer getSnapshotConsumer() {
-		return new ScheduledTestGenerator()
+		return new ScheduledTestGenerator(getInitializer())
 			.withDumpOnShutDown(true)
 			.withDumpTo(Paths.get("target/generated"));
 	}
@@ -26,5 +26,10 @@ public class AgentConfig implements SnapshotConfig {
 	@Override
 	public List<String> getPackages() {
 		return asList("com.almondtools.testrecorder.examples");
+	}
+	
+	@Override
+	public Class<? extends Runnable> getInitializer() {
+		return null;
 	}
 }
