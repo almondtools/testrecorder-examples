@@ -5,9 +5,9 @@ import static java.util.Arrays.asList;
 import java.nio.file.Paths;
 import java.util.List;
 
-import com.almondtools.testrecorder.ScheduledTestGenerator;
-import com.almondtools.testrecorder.SnapshotConfig;
-import com.almondtools.testrecorder.SnapshotConsumer;
+import net.amygdalum.testrecorder.ScheduledTestGenerator;
+import net.amygdalum.testrecorder.SnapshotConfig;
+import net.amygdalum.testrecorder.SnapshotConsumer;
 
 public class AgentConfig implements SnapshotConfig {
 

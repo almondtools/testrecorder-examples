@@ -36,9 +36,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.github.almondtools</groupId>
+			<groupId>net.amygdalum</groupId>
 			<artifactId>testrecorder</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.1</version>
 		</dependency>
 	</dependencies>
 	<build>

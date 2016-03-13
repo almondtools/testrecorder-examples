@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.almondtools.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Snapshot;
 
 public class OtherFizzBuzz {
 
