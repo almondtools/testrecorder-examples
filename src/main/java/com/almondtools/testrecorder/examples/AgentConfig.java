@@ -5,11 +5,11 @@ import static java.util.Arrays.asList;
 import java.nio.file.Paths;
 import java.util.List;
 
+import net.amygdalum.testrecorder.DefaultTestRecorderAgentConfig;
 import net.amygdalum.testrecorder.ScheduledTestGenerator;
-import net.amygdalum.testrecorder.SnapshotConfig;
 import net.amygdalum.testrecorder.SnapshotConsumer;
 
-public class AgentConfig implements SnapshotConfig {
+public class AgentConfig extends DefaultTestRecorderAgentConfig {
 
 	@Override
 	public SnapshotConsumer getSnapshotConsumer() {
