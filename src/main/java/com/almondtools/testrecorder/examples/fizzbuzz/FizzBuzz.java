@@ -1,8 +1,7 @@
-package com.almondtools.testrecorder.examples;
+package com.almondtools.testrecorder.examples.fizzbuzz;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import net.amygdalum.testrecorder.Snapshot;
 
@@ -18,16 +17,6 @@ public class FizzBuzz {
 		this.buffer = buffer;
 	}
 
-	public static void main(String[] args){
-
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		for(int i= 1; i <= 100; i++){
-			fizzBuzz.fizzBuzz(i);
-		}
-		System.out.println(fizzBuzz.buffer.stream()
-			.collect(Collectors.joining("\n", "", "\n")));
-	}
-	
 	@Snapshot
 	public void fizzBuzz(int i) {
 		if (i % 15 == 0) {

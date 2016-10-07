@@ -1,4 +1,4 @@
-package com.almondtools.testrecorder.examples;
+package com.almondtools.testrecorder.examples.fizzbuzz;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,13 +38,6 @@ public class OtherFizzBuzz {
 		return nullSet;
 	}
 
-	public static void main(String[] args){
-		OtherFizzBuzz fizzBuzz = new OtherFizzBuzz();
-		for(int i= 1; i <= 100; i++){
-			System.out.println(fizzBuzz.fizzBuzz(i));
-		}
-	}
-	
 	@Snapshot
 	public String fizzBuzz(int i) {
 		if (i % 15 == 0) {

@@ -1,4 +1,4 @@
-package com.almondtools.testrecorder.examples;
+package com.almondtools.testrecorder.examples.fizzbuzz;
 
 import net.amygdalum.testrecorder.Snapshot;
 
@@ -13,14 +13,6 @@ public class BeanFizzBuzz {
 		this.last = last;
 	}
 
-	public static void main(String[] args){
-
-		BeanFizzBuzz fizzBuzz = new BeanFizzBuzz();
-		for(int i= 1; i <= 100; i++){
-			fizzBuzz.fizzBuzz(i);
-		}
-	}
-	
 	@Snapshot
 	public void fizzBuzz(int i) {
 		if (i % 15 == 0) {
