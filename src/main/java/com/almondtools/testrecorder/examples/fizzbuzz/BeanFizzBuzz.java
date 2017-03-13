@@ -1,6 +1,6 @@
 package com.almondtools.testrecorder.examples.fizzbuzz;
 
-import net.amygdalum.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Recorded;
 
 public class BeanFizzBuzz {
 
@@ -13,7 +13,7 @@ public class BeanFizzBuzz {
 		this.last = last;
 	}
 
-	@Snapshot
+	@Recorded
 	public void fizzBuzz(int i) {
 		if (i % 15 == 0) {
 			last = "FizzBuzz";

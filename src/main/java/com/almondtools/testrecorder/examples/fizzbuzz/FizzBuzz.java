@@ -3,7 +3,7 @@ package com.almondtools.testrecorder.examples.fizzbuzz;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.amygdalum.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Recorded;
 
 public class FizzBuzz {
 
@@ -17,7 +17,7 @@ public class FizzBuzz {
 		this.buffer = buffer;
 	}
 
-	@Snapshot
+	@Recorded
 	public void fizzBuzz(int i) {
 		if (i % 15 == 0) {
 			buffer.add("FizzBuzz");

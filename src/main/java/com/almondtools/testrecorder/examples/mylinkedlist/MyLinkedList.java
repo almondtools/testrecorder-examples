@@ -2,12 +2,12 @@ package com.almondtools.testrecorder.examples.mylinkedlist;
 
 import java.util.NoSuchElementException;
 
-import net.amygdalum.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Recorded;
 
 public class MyLinkedList {
 	private MyElement next;
 	
-	@Snapshot
+	@Recorded
 	public void add(Object element) {
 		if (next == null) {
 			next = new MyElement(element);
@@ -20,7 +20,7 @@ public class MyLinkedList {
 		}
 	}
 	
-	@Snapshot
+	@Recorded
 	public void remove(int index) {
 		if (index == 0) {
 			if (next ==  null) {
@@ -45,7 +45,7 @@ public class MyLinkedList {
 		}
 	}
 
-	@Snapshot
+	@Recorded
 	public Object get(int index) {
 		return get(next, index);
 	}

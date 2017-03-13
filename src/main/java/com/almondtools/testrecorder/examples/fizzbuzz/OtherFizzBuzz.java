@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import net.amygdalum.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Recorded;
 
 public class OtherFizzBuzz {
 
@@ -38,7 +38,7 @@ public class OtherFizzBuzz {
 		return nullSet;
 	}
 
-	@Snapshot
+	@Recorded
 	public String fizzBuzz(int i) {
 		if (i % 15 == 0) {
 			return "FizzBuzz";

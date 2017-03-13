@@ -13,7 +13,7 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 
 	@Override
 	public SnapshotConsumer getSnapshotConsumer() {
-		return new ScheduledTestGenerator(getInitializer())
+		return new ScheduledTestGenerator()
 			.withDumpOnShutDown(true)
 			.withDumpTo(Paths.get("target/generated"));
 	}
@@ -27,9 +27,5 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 	public List<String> getPackages() {
 		return asList("com.almondtools.testrecorder.examples");
 	}
-	
-	@Override
-	public Class<? extends Runnable> getInitializer() {
-		return null;
-	}
+
 }
