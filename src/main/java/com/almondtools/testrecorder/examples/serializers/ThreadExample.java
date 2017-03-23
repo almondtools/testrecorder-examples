@@ -4,7 +4,7 @@ import net.amygdalum.testrecorder.Recorded;
 
 public class ThreadExample {
     
-    public State state;
+    private State state;
     
     public ThreadExample() {
         state = State.INITIAL;
