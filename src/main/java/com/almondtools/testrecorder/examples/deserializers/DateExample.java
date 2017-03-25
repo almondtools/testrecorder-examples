@@ -3,6 +3,8 @@ package com.almondtools.testrecorder.examples.deserializers;
 import java.util.Calendar;
 import java.util.Date;
 
+import net.amygdalum.testrecorder.Recorded;
+
 public class DateExample {
     
     private Date date;
@@ -28,6 +30,7 @@ public class DateExample {
         System.out.println(example.addYear());
     }
 
+    @Recorded
     Date addDay() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -35,6 +38,7 @@ public class DateExample {
         return cal.getTime();
     }
 
+    @Recorded
     Date addMonth() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -42,6 +46,7 @@ public class DateExample {
         return cal.getTime();
     }
 
+    @Recorded
     Date addYear() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);

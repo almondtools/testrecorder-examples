@@ -1,11 +1,18 @@
 package com.almondtools.testrecorder.examples.deserializers;
 
+import static java.lang.String.valueOf;
+import static net.amygdalum.testrecorder.deserializers.Templates.callMethod;
+
 import java.lang.reflect.Type;
+import java.util.Calendar;
 import java.util.Date;
+
+import org.hamcrest.Matcher;
 
 import net.amygdalum.testrecorder.DeserializationException;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
 import net.amygdalum.testrecorder.deserializers.Computation;
+import net.amygdalum.testrecorder.deserializers.TypeManager;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultMatcherGenerator;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
@@ -20,12 +27,23 @@ public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmu
 
     @Override
     public boolean matches(Type type) {
-        return true;
+        return type.equals(Date.class);
     }
 
     @Override
     public Computation tryDeserialize(SerializedImmutable<Date> value, MatcherGenerators generator) throws DeserializationException {
-        // TODO Auto-generated method stub
-        return null;
+        Date date = value.getValue();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        
+        TypeManager types = generator.getTypes();
+        types.registerType(DateMatcher.class);
+        
+        String expression = callMethod(types.getBestName(DateMatcher.class), "matchesDate");
+        expression = callMethod(expression, "withDay", valueOf(cal.get(Calendar.DAY_OF_MONTH)));
+        expression = callMethod(expression, "withMonth", valueOf(cal.get(Calendar.MONTH)));
+        expression = callMethod(expression, "withYear", valueOf(cal.get(Calendar.YEAR)));
+        
+        return new Computation(expression, Matcher.class);
     }
 }
