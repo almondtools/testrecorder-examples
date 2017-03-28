@@ -44,7 +44,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
         int year = cal.get(Calendar.YEAR);
         
         List<String> statements = new ArrayList<>();
-        String calexpression = "cal";
+        String calexpression = generator.newLocal("cal");
         statements.add(assignLocalVariableStatement(types.getBestName(Calendar.class), calexpression, callMethod(types.getBestName(Calendar.class), "getInstance")));
         statements.add(callMethodStatement(calexpression, "set", "Calendar.DAY_OF_MONTH", String.valueOf(day)));
         statements.add(callMethodStatement(calexpression, "set", "Calendar.MONTH", String.valueOf(month)));
