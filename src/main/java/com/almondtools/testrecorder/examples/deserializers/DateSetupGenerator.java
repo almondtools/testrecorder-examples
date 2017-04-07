@@ -13,6 +13,7 @@ import java.util.List;
 import net.amygdalum.testrecorder.DeserializationException;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
 import net.amygdalum.testrecorder.deserializers.Computation;
+import net.amygdalum.testrecorder.deserializers.DeserializerContext;
 import net.amygdalum.testrecorder.deserializers.TypeManager;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultSetupGenerator;
 import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
@@ -32,7 +33,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
 	}
 
 	@Override
-	public Computation tryDeserialize(SerializedImmutable<Date> value, SetupGenerators generator) throws DeserializationException {
+	public Computation tryDeserialize(SerializedImmutable<Date> value, SetupGenerators generator, DeserializerContext context) throws DeserializationException {
         TypeManager types = generator.getTypes();
         types.registerTypes(Date.class, Calendar.class);
 
