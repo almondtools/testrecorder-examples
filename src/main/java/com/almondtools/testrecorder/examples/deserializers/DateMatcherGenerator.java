@@ -40,7 +40,7 @@ public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmu
         TypeManager types = generator.getTypes();
         types.registerType(DateMatcher.class);
         
-        String expression = callMethod(types.getBestName(DateMatcher.class), "matchesDate");
+        String expression = callMethod(types.getRawTypeName(DateMatcher.class), "matchesDate");
         expression = callMethod(expression, "withDay", valueOf(cal.get(Calendar.DAY_OF_MONTH)));
         expression = callMethod(expression, "withMonth", valueOf(cal.get(Calendar.MONTH)));
         expression = callMethod(expression, "withYear", valueOf(cal.get(Calendar.YEAR)));
