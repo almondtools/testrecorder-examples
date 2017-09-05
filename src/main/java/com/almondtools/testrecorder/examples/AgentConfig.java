@@ -15,6 +15,7 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 	public SnapshotConsumer getSnapshotConsumer() {
 		return new ScheduledTestGenerator()
 			.withDumpOnShutDown(true)
+			.withDumpMaximum(1000)
 			.withDumpTo(Paths.get("target/generated"));
 	}
 	
