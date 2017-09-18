@@ -52,7 +52,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
         statements.add(callMethodStatement(calexpression, "set", "Calendar.YEAR", String.valueOf(year)));
         
         String expression = callMethod(calexpression, "getTime");
-        return new Computation(expression, value.getResultType(), statements);
+        return Computation.expression(expression, value.getResultType(), statements);
 	}
 
 }

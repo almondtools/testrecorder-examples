@@ -45,6 +45,6 @@ public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmu
         expression = callMethod(expression, "withMonth", valueOf(cal.get(Calendar.MONTH)));
         expression = callMethod(expression, "withYear", valueOf(cal.get(Calendar.YEAR)));
         
-        return new Computation(expression, Matcher.class);
+        return Computation.expression(expression, Matcher.class);
     }
 }
