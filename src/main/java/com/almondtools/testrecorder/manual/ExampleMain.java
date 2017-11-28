@@ -5,10 +5,10 @@ import org.hamcrest.Matcher;
 import net.amygdalum.testrecorder.CodeSerializer;
 import net.amygdalum.testrecorder.ConfigurableSerializerFacade;
 import net.amygdalum.testrecorder.DefaultTestRecorderAgentConfig;
-import net.amygdalum.testrecorder.SerializationProfile;
-import net.amygdalum.testrecorder.SerializerFacade;
 import net.amygdalum.testrecorder.deserializers.DeserializerFactory;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
+import net.amygdalum.testrecorder.profile.SerializationProfile;
+import net.amygdalum.testrecorder.serializers.SerializerFacade;
 
 public class ExampleMain {
 

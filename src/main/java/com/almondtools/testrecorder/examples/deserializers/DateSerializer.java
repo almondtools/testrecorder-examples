@@ -6,9 +6,9 @@ import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
-import net.amygdalum.testrecorder.Serializer;
-import net.amygdalum.testrecorder.SerializerFacade;
-import net.amygdalum.testrecorder.SerializerFactory;
+import net.amygdalum.testrecorder.serializers.SerializerFacade;
+import net.amygdalum.testrecorder.serializers.SerializerFactory;
+import net.amygdalum.testrecorder.types.Serializer;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 public class DateSerializer implements Serializer<SerializedImmutable<Date>> {
