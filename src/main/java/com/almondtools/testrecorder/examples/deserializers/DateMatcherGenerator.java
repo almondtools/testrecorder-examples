@@ -37,7 +37,7 @@ public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmu
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         
-        TypeManager types = generator.getTypes();
+        TypeManager types = context.getTypes();
         types.registerType(DateMatcher.class);
         
         String expression = callMethod(types.getRawTypeName(DateMatcher.class), "matchesDate");

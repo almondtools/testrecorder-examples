@@ -5,10 +5,11 @@ import org.hamcrest.Matcher;
 import net.amygdalum.testrecorder.CodeSerializer;
 import net.amygdalum.testrecorder.ConfigurableSerializerFacade;
 import net.amygdalum.testrecorder.DefaultTestRecorderAgentConfig;
-import net.amygdalum.testrecorder.deserializers.DeserializerFactory;
+import net.amygdalum.testrecorder.deserializers.Computation;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
 import net.amygdalum.testrecorder.profile.SerializationProfile;
 import net.amygdalum.testrecorder.serializers.SerializerFacade;
+import net.amygdalum.testrecorder.types.Deserializer;
 
 public class ExampleMain {
 
@@ -29,7 +30,7 @@ public class ExampleMain {
 	private static void printMatcherCode(ExampleObject exampleObject) {
 		SerializationProfile profile = new DefaultTestRecorderAgentConfig();
 		SerializerFacade facade = new ConfigurableSerializerFacade(profile);
-		DeserializerFactory factory = new MatcherGenerators.Factory();
+		Deserializer<Computation> factory = new MatcherGenerators();
 
 		CodeSerializer codeSerializer = new CodeSerializer("", facade, factory);
 		codeSerializer.getTypes().registerTypes(Matcher.class, ExampleObject.class);

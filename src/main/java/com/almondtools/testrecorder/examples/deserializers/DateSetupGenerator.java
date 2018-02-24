@@ -34,7 +34,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
 
 	@Override
 	public Computation tryDeserialize(SerializedImmutable<Date> value, SetupGenerators generator, DeserializerContext context) throws DeserializationException {
-        TypeManager types = generator.getTypes();
+        TypeManager types = context.getTypes();
         types.registerTypes(Date.class, Calendar.class);
 
         Date date = value.getValue();
@@ -45,7 +45,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
         int year = cal.get(Calendar.YEAR);
         
         List<String> statements = new ArrayList<>();
-        String calexpression = generator.newLocal("cal");
+        String calexpression = context.newLocal("cal");
         statements.add(assignLocalVariableStatement(types.getVariableTypeName(Calendar.class), calexpression, callMethod(types.getRawTypeName(Calendar.class), "getInstance")));
         statements.add(callMethodStatement(calexpression, "set", "Calendar.DAY_OF_MONTH", String.valueOf(day)));
         statements.add(callMethodStatement(calexpression, "set", "Calendar.MONTH", String.valueOf(month)));
