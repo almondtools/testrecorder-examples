@@ -7,7 +7,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import net.amygdalum.testrecorder.serializers.SerializerFacade;
-import net.amygdalum.testrecorder.serializers.SerializerFactory;
+import net.amygdalum.testrecorder.types.SerializedReferenceType;
 import net.amygdalum.testrecorder.types.SerializedValue;
 import net.amygdalum.testrecorder.types.Serializer;
 import net.amygdalum.testrecorder.util.Reflections;
@@ -18,7 +18,7 @@ public class ThreadSerializer implements Serializer<SerializedObject> {
 
 	private SerializerFacade facade;
 
-    public ThreadSerializer(SerializerFacade facade) {
+	public ThreadSerializer(SerializerFacade facade) {
 		this.facade = facade;
 	}
 
@@ -28,32 +28,26 @@ public class ThreadSerializer implements Serializer<SerializedObject> {
 	}
 
 	@Override
-	public SerializedObject generate(Type resultType, Type type) {
-	    return new SerializedObject(type).withResult(resultType);
+	public SerializedObject generate(Type type) {
+		return new SerializedObject(type);
 	}
 
 	@Override
 	public void populate(SerializedObject serializedObject, Object object) {
 		try {
-	        Thread thread = (Thread) object;
-            Field field = Thread.class.getDeclaredField("target");
-            Reflections.accessing(field).exec(f-> {
-                Runnable runnable = (Runnable) f.get(thread);
-                SerializedValue serializedRunnable = facade.serialize(runnable.getClass(), runnable);
-                serializedObject.addField(new SerializedField(Thread.class, "target", Runnable.class, serializedRunnable));
-            });
-        } catch (ReflectiveOperationException | SecurityException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-	}
-
-	public static class Factory implements SerializerFactory<SerializedObject> {
-
-		@Override
-		public ThreadSerializer newSerializer(SerializerFacade facade) {
-			return new ThreadSerializer(facade);
+			Thread thread = (Thread) object;
+			Field field = Thread.class.getDeclaredField("target");
+			Reflections.accessing(field).exec(f -> {
+				Runnable runnable = (Runnable) f.get(thread);
+				SerializedValue serializedRunnable = facade.serialize(runnable.getClass(), runnable);
+				if (serializedRunnable instanceof SerializedReferenceType) {
+					((SerializedReferenceType) serializedRunnable).useAs(Runnable.class);
+				}
+				serializedObject.addField(new SerializedField(Thread.class, "target", Runnable.class, serializedRunnable));
+			});
+		} catch (ReflectiveOperationException | SecurityException e) {
+			throw new RuntimeException(e.getMessage());
 		}
-
 	}
 
 }

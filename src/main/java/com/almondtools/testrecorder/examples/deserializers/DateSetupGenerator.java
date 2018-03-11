@@ -3,6 +3,7 @@ package com.almondtools.testrecorder.examples.deserializers;
 import static net.amygdalum.testrecorder.deserializers.Templates.assignLocalVariableStatement;
 import static net.amygdalum.testrecorder.deserializers.Templates.callMethod;
 import static net.amygdalum.testrecorder.deserializers.Templates.callMethodStatement;
+import static net.amygdalum.testrecorder.util.Types.mostSpecialOf;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -11,12 +12,12 @@ import java.util.Date;
 import java.util.List;
 
 import net.amygdalum.testrecorder.deserializers.Adaptor;
-import net.amygdalum.testrecorder.deserializers.Computation;
-import net.amygdalum.testrecorder.deserializers.TypeManager;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultSetupGenerator;
 import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
+import net.amygdalum.testrecorder.types.Computation;
 import net.amygdalum.testrecorder.types.DeserializationException;
 import net.amygdalum.testrecorder.types.DeserializerContext;
+import net.amygdalum.testrecorder.types.TypeManager;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 @SuppressWarnings("rawtypes")
@@ -52,7 +53,7 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
         statements.add(callMethodStatement(calexpression, "set", "Calendar.YEAR", String.valueOf(year)));
         
         String expression = callMethod(calexpression, "getTime");
-        return Computation.expression(expression, value.getResultType(), statements);
+        return Computation.expression(expression, mostSpecialOf(value.getUsedTypes()).orElse(Object.class), statements);
 	}
 
 }
