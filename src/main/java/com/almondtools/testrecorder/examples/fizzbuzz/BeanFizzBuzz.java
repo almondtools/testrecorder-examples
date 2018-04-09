@@ -1,6 +1,6 @@
 package com.almondtools.testrecorder.examples.fizzbuzz;
 
-import net.amygdalum.testrecorder.Recorded;
+import net.amygdalum.testrecorder.profile.Recorded;
 
 public class BeanFizzBuzz {
 

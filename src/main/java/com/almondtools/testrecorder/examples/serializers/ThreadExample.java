@@ -1,6 +1,6 @@
 package com.almondtools.testrecorder.examples.serializers;
 
-import net.amygdalum.testrecorder.Recorded;
+import net.amygdalum.testrecorder.profile.Recorded;
 
 public class ThreadExample {
     

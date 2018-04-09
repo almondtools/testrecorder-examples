@@ -37,8 +37,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.amygdalum</groupId>
-			<artifactId>testrecorder</artifactId>
-			<version>0.4.0</version>
+			<artifactId>testrecorder-agent</artifactId>
+			<version>0.5.0</version>
 		</dependency>
 	</dependencies>
 	<build>

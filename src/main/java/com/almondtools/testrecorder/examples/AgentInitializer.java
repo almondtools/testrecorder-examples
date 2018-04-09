@@ -1,6 +1,6 @@
 package com.almondtools.testrecorder.examples;
 
-import net.amygdalum.testrecorder.TestRecorderAgentInitializer;
+import net.amygdalum.testrecorder.runtime.TestRecorderAgentInitializer;
 
 public class AgentInitializer implements TestRecorderAgentInitializer {
 

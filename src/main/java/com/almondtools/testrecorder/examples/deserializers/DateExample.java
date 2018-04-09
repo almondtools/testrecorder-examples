@@ -3,7 +3,7 @@ package com.almondtools.testrecorder.examples.deserializers;
 import java.util.Calendar;
 import java.util.Date;
 
-import net.amygdalum.testrecorder.Recorded;
+import net.amygdalum.testrecorder.profile.Recorded;
 
 public class DateExample {
     
