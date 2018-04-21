@@ -8,6 +8,7 @@ import java.util.List;
 
 import net.amygdalum.testrecorder.serializers.SerializerFacade;
 import net.amygdalum.testrecorder.types.Serializer;
+import net.amygdalum.testrecorder.types.SerializerSession;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 public class DateSerializer implements Serializer<SerializedImmutable<Date>> {
@@ -21,12 +22,12 @@ public class DateSerializer implements Serializer<SerializedImmutable<Date>> {
     }
 
     @Override
-    public SerializedImmutable<Date> generate(Type type) {
+    public SerializedImmutable<Date> generate(Type type, SerializerSession session) {
         return new SerializedImmutable<>(type);
     }
 
     @Override
-    public void populate(SerializedImmutable<Date> serializedObject, Object object) {
+    public void populate(SerializedImmutable<Date> serializedObject, Object object, SerializerSession session) {
         Date date = (Date) ((Date) object).clone();
         serializedObject.setValue(date);
     }

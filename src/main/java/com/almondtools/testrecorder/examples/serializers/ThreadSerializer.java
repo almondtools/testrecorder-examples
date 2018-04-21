@@ -10,6 +10,7 @@ import net.amygdalum.testrecorder.serializers.SerializerFacade;
 import net.amygdalum.testrecorder.types.SerializedReferenceType;
 import net.amygdalum.testrecorder.types.SerializedValue;
 import net.amygdalum.testrecorder.types.Serializer;
+import net.amygdalum.testrecorder.types.SerializerSession;
 import net.amygdalum.testrecorder.util.Reflections;
 import net.amygdalum.testrecorder.values.SerializedField;
 import net.amygdalum.testrecorder.values.SerializedObject;
@@ -28,18 +29,18 @@ public class ThreadSerializer implements Serializer<SerializedObject> {
 	}
 
 	@Override
-	public SerializedObject generate(Type type) {
+	public SerializedObject generate(Type type, SerializerSession session) {
 		return new SerializedObject(type);
 	}
 
 	@Override
-	public void populate(SerializedObject serializedObject, Object object) {
+	public void populate(SerializedObject serializedObject, Object object, SerializerSession session) {
 		try {
 			Thread thread = (Thread) object;
 			Field field = Thread.class.getDeclaredField("target");
 			Reflections.accessing(field).exec(f -> {
 				Runnable runnable = (Runnable) f.get(thread);
-				SerializedValue serializedRunnable = facade.serialize(runnable.getClass(), runnable);
+				SerializedValue serializedRunnable = facade.serialize(runnable.getClass(), runnable, session);
 				if (serializedRunnable instanceof SerializedReferenceType) {
 					((SerializedReferenceType) serializedRunnable).useAs(Runnable.class);
 				}
