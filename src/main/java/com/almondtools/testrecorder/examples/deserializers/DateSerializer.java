@@ -2,9 +2,9 @@ package com.almondtools.testrecorder.examples.deserializers;
 
 import static java.util.Arrays.asList;
 
-import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 import net.amygdalum.testrecorder.serializers.SerializerFacade;
 import net.amygdalum.testrecorder.types.Serializer;
@@ -20,9 +20,14 @@ public class DateSerializer implements Serializer<SerializedImmutable<Date>> {
     public List<Class<?>> getMatchingClasses() {
         return asList(Date.class);
     }
+    
+    @Override
+    public Stream<?> components(Object object, SerializerSession session) {
+    	return Stream.empty();
+    }
 
     @Override
-    public SerializedImmutable<Date> generate(Type type, SerializerSession session) {
+    public SerializedImmutable<Date> generate(Class<?> type, SerializerSession session) {
         return new SerializedImmutable<>(type);
     }
 
