@@ -12,16 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 import net.amygdalum.testrecorder.deserializers.Adaptor;
+import net.amygdalum.testrecorder.deserializers.Deserializer;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultSetupGenerator;
-import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
 import net.amygdalum.testrecorder.types.Computation;
-import net.amygdalum.testrecorder.types.DeserializationException;
 import net.amygdalum.testrecorder.types.DeserializerContext;
 import net.amygdalum.testrecorder.types.TypeManager;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 @SuppressWarnings("rawtypes")
-public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutable<Date>> implements Adaptor<SerializedImmutable<Date>, SetupGenerators> {
+public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutable<Date>> implements Adaptor<SerializedImmutable<Date>> {
 
     @Override
 	public Class<SerializedImmutable> getAdaptedClass() {
@@ -34,7 +33,8 @@ public class DateSetupGenerator extends DefaultSetupGenerator<SerializedImmutabl
 	}
 
 	@Override
-	public Computation tryDeserialize(SerializedImmutable<Date> value, SetupGenerators generator, DeserializerContext context) throws DeserializationException {
+	public Computation tryDeserialize(SerializedImmutable<Date> value, Deserializer generator) {
+		DeserializerContext context = generator.getContext();
         TypeManager types = context.getTypes();
         types.registerTypes(Date.class, Calendar.class);
 

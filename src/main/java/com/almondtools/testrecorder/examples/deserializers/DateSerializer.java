@@ -6,14 +6,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
-import net.amygdalum.testrecorder.serializers.SerializerFacade;
 import net.amygdalum.testrecorder.types.Serializer;
 import net.amygdalum.testrecorder.types.SerializerSession;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 public class DateSerializer implements Serializer<SerializedImmutable<Date>> {
 
-	public DateSerializer(SerializerFacade facade) {
+	public DateSerializer() {
     }
 
     @Override

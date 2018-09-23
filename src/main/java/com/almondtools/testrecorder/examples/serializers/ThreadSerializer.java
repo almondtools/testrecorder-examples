@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 import java.util.stream.Stream.Builder;
 
 import net.amygdalum.testrecorder.serializers.AbstractCompositeSerializer;
+import net.amygdalum.testrecorder.types.SerializedField;
 import net.amygdalum.testrecorder.types.Serializer;
 import net.amygdalum.testrecorder.types.SerializerSession;
-import net.amygdalum.testrecorder.values.SerializedField;
 import net.amygdalum.testrecorder.values.SerializedObject;
 
 public class ThreadSerializer extends AbstractCompositeSerializer implements Serializer<SerializedObject> {

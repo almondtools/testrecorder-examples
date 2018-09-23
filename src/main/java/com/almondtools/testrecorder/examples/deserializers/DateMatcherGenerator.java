@@ -10,16 +10,15 @@ import java.util.Date;
 import org.hamcrest.Matcher;
 
 import net.amygdalum.testrecorder.deserializers.Adaptor;
+import net.amygdalum.testrecorder.deserializers.Deserializer;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultMatcherGenerator;
-import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
 import net.amygdalum.testrecorder.types.Computation;
-import net.amygdalum.testrecorder.types.DeserializationException;
 import net.amygdalum.testrecorder.types.DeserializerContext;
 import net.amygdalum.testrecorder.types.TypeManager;
 import net.amygdalum.testrecorder.values.SerializedImmutable;
 
 @SuppressWarnings("rawtypes")
-public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmutable<Date>> implements Adaptor<SerializedImmutable<Date>, MatcherGenerators> {
+public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmutable<Date>> implements Adaptor<SerializedImmutable<Date>> {
 
     @Override
     public Class<SerializedImmutable> getAdaptedClass() {
@@ -32,7 +31,8 @@ public class DateMatcherGenerator extends DefaultMatcherGenerator<SerializedImmu
     }
 
     @Override
-    public Computation tryDeserialize(SerializedImmutable<Date> value, MatcherGenerators generator, DeserializerContext context) throws DeserializationException {
+    public Computation tryDeserialize(SerializedImmutable<Date> value, Deserializer generator) {
+		DeserializerContext context = generator.getContext();
         Date date = value.getValue();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
