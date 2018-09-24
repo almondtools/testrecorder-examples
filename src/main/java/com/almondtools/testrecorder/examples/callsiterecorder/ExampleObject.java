@@ -1,4 +1,4 @@
-package com.almondtools.testrecorder.manual;
+package com.almondtools.testrecorder.examples.callsiterecorder;
 
 public class ExampleObject {
     private String name;
