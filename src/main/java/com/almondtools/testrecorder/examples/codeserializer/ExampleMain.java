@@ -8,7 +8,6 @@ import java.util.concurrent.CompletableFuture;
 import net.amygdalum.testrecorder.DefaultPerformanceProfile;
 import net.amygdalum.testrecorder.DefaultSerializationProfile;
 import net.amygdalum.testrecorder.DefaultSnapshotConsumer;
-import net.amygdalum.testrecorder.SnapshotConsumer;
 import net.amygdalum.testrecorder.callsiterecorder.CallsiteRecorder;
 import net.amygdalum.testrecorder.deserializers.DeserializerFactory;
 import net.amygdalum.testrecorder.deserializers.DeserializerTypeManager;
@@ -20,6 +19,7 @@ import net.amygdalum.testrecorder.profile.ClassPathConfigurationLoader;
 import net.amygdalum.testrecorder.profile.DefaultPathConfigurationLoader;
 import net.amygdalum.testrecorder.profile.PerformanceProfile;
 import net.amygdalum.testrecorder.profile.SerializationProfile;
+import net.amygdalum.testrecorder.profile.SnapshotConsumer;
 import net.amygdalum.testrecorder.types.ContextSnapshot;
 import net.amygdalum.testrecorder.types.TypeManager;
 
