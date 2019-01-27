@@ -13,6 +13,7 @@ import net.amygdalum.testrecorder.deserializers.DeserializerFactory;
 import net.amygdalum.testrecorder.deserializers.DeserializerTypeManager;
 import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
+import net.amygdalum.testrecorder.generator.JUnit4TestTemplate;
 import net.amygdalum.testrecorder.generator.MethodGenerator;
 import net.amygdalum.testrecorder.profile.AgentConfiguration;
 import net.amygdalum.testrecorder.profile.ClassPathConfigurationLoader;
@@ -49,7 +50,7 @@ public class ExampleMain {
 		TypeManager types = new DeserializerTypeManager();
 		DeserializerFactory setup = new SetupGenerators(config);
 		DeserializerFactory matcher = new MatcherGenerators(config);
-		recordings.thenAccept(snapshots -> snapshots.stream().forEach(snapshot -> System.out.println(new MethodGenerator(0, types, setup, matcher, emptyList())
+		recordings.thenAccept(snapshots -> snapshots.stream().forEach(snapshot -> System.out.println(new MethodGenerator(0, types, setup, matcher, new JUnit4TestTemplate(), emptyList())
 			.analyze(snapshot)
 			.generateArrange()
 			.generateAct()
