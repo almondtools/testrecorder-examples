@@ -1,19 +1,13 @@
 package com.almondtools.testrecorder.examples.codeserializer;
 
 public class ExampleObject {
-    private int counter;
+    private String name;
 
-    public ExampleObject inc() {
-    	counter++;
-        return this;
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    public ExampleObject reset() {
-    	this.counter = 0;
-    	return this;
+
+    public String getName() {
+        return name;
     }
-    
-    public int get() {
-		return counter;
-	}
 }

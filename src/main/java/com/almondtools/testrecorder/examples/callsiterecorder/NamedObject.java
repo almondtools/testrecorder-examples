@@ -1,6 +1,6 @@
 package com.almondtools.testrecorder.examples.callsiterecorder;
 
-public class ExampleObject {
+public class NamedObject {
     private String name;
 
     public void setName(String name) {
