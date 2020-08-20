@@ -28,17 +28,17 @@ public class CounterMain {
 
 	public static void main(String[] args) throws Exception {
 		Counter counter = new Counter();
-		try (CallsiteRecorder recorder = new CallsiteRecorder(Counter.class.getDeclaredMethod("inc"))) {
-		    printTest(recorder.record(() -> {
-		        int doubleInc = counter.inc().inc().get();
-		        System.out.println(doubleInc);
-		    }));
-		    printTest(recorder.record(() -> {
-		        int resetInc = counter.reset().inc().get();
-		        System.out.println(resetInc);
-		    }));
+		try (CallsiteRecorder recorder = CallsiteRecorder.create(Counter.class.getDeclaredMethod("inc"))) {
+			printTest(recorder.record(() -> {
+				int doubleInc = counter.inc().inc().get();
+				System.out.println(doubleInc);
+			}));
+			printTest(recorder.record(() -> {
+				int resetInc = counter.reset().inc().get();
+				System.out.println(resetInc);
+			}));
 		}
-		
+
 	}
 
 	private static void printTest(CompletableFuture<List<ContextSnapshot>> recordings) {
